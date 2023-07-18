@@ -20,14 +20,14 @@ colors = {
     "green": pygame.Color(0, 255, 0),
 }
 
-snake_head = pygame.transform.scale(pygame.image.load("assets/snake_head.png"), (20, 20))
-banana = pygame.transform.scale(pygame.image.load("assets/banana.png"), (20, 20))
-apple = pygame.transform.scale(pygame.image.load("assets/apple.png"), (20, 20))
-cherry = pygame.transform.scale(pygame.image.load("assets/cherry.png"), (20, 20))
-s_berry = pygame.transform.scale(pygame.image.load("assets/s_berry.png"), (20, 20))
-pineapple = pygame.transform.scale(pygame.image.load("assets/pineapple.png"), (20, 20))
+snake_head = pygame.transform.scale(pygame.image.load("assets/snake_head.png"), (18, 18))
+apple = pygame.transform.scale(pygame.image.load("assets/carrot.png"), (18, 20))
+carrot = pygame.transform.scale(pygame.image.load("assets/apple.png"), (18, 20))
+melon = pygame.transform.scale(pygame.image.load("assets/melon.png"), (20, 20))
+beet = pygame.transform.scale(pygame.image.load("assets/beet.png"), (20, 20))
+potato = pygame.transform.scale(pygame.image.load("assets/potato.png"), (20, 20))
 
-fruits = [banana, apple, cherry, s_berry, pineapple]
+fruits = [apple, carrot, melon, beet]
 
 
 def random_fruit_position():
@@ -39,11 +39,11 @@ fruit_position = random_fruit_position()
 fruit = random.choice(fruits)
 
 
-def draw_text(content, font, size, color, pos):
+def draw_text(content, font, size, color, pos1):
     font = pygame.font.SysFont(font, size)
     surface = font.render(content, True, color)
     rect = surface.get_rect()
-    rect.midtop = pos
+    rect.midtop = pos1
     game_window.blit(surface, rect)
 
 
@@ -56,7 +56,7 @@ def game_over():
 
 
 def draw_rect(color, position):
-    pygame.draw.rect(game_window, color, pygame.Rect(position[0], position[1], 20, 20))
+    pygame.draw.rect(game_window, color, pygame.Rect(position[0], position[1], 18, 18))
 
 
 def handle_input():
@@ -99,7 +99,7 @@ while True:
         fruit = random.choice(fruits)
         fruit_spawn = True
 
-    game_window.fill((80, 80, 80))
+    game_window.fill((40, 40, 40))
     for index, pos in enumerate(snake_body):
         if index == 0:
             game_window.blit(snake_head, pos)
